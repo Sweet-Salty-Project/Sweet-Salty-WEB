@@ -8,6 +8,10 @@ import { useRouter } from "next/router";
 const Wrapper = styled.div`
   background: #f3f3f3;
 `;
+export const HiddenBox = styled.div`
+  width: 100%;
+  height: 84px;
+`;
 const Body = styled.div``;
 
 interface ILayoutProps {
@@ -43,6 +47,7 @@ export default function Layout(props: ILayoutProps) {
   return (
     <Wrapper>
       {!noHeader && <LayoutHeader />}
+      {!noHeader && <HiddenBox>훼이크 박스</HiddenBox>}
 
       {isMainPage && <LayoutBanner />}
 

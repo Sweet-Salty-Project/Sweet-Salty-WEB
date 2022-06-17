@@ -11,6 +11,7 @@ interface IProps {
 
 export const HeaderWrapper = styled.div`
   width: 100%;
+  height: 84px;
   background: #fff;
   display: flex;
   justify-content: center;
@@ -21,7 +22,7 @@ export const HeaderWrapper = styled.div`
     width: 360px;
     height: 68px;
     background: #fff;
-    z-index: 10;
+    z-index: 100;
   }
 `;
 export const HeaderBox = styled.div`
