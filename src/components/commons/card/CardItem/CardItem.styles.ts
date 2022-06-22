@@ -69,6 +69,7 @@ export const ItemInfoMidDiv = styled.div`
 
 export const MidStoreInfoDiv = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const ItemInfoStoreName = styled.div`
@@ -78,7 +79,6 @@ export const ItemInfoStoreName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 50%;
   @media ${breakPoints.mobile} {
     font-size: 10px;
     line-height: 14px;
@@ -120,6 +120,7 @@ export const ItemInfoLocationDiv = styled.div`
   @media ${breakPoints.mobile} {
     font-size: 10px;
     line-height: 14px;
+    width: 40px;
   }
 `;
 

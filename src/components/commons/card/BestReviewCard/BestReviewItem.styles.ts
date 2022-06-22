@@ -9,7 +9,9 @@ export const ItemMainDiv = styled.div`
   height: 342px;
   width: 338px;
   @media ${breakPoints.mobile} {
-    width:245px;}
+    width: 245px;
+    height: 242px;
+  }
 `;
 export const ItemImg = styled.div`
   background-color: #ffa230;
@@ -52,10 +54,11 @@ export const ItemTitle = styled.div`
 `;
 export const ItemInfoDiv = styled.div`
   height: 92px;
-  padding: 10px 0;
+  padding: 10px 0 0;
   width: 338px;
   @media ${breakPoints.mobile} {
     width: 100%;
+    height: 72px;
   }
 `;
 export const ItemInfoTopDiv = styled.div`
@@ -69,6 +72,9 @@ export const ItemInfoMidDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 0;
+  @media ${breakPoints.mobile} {
+    padding: 1px 0;
+  }
 `;
 
 export const MidStoreInfoDiv = styled.div`
@@ -140,15 +146,27 @@ export const ItemInfoBottomDiv = styled.div`
 export const ItemInfoImg = styled.img`
   height: 24px;
   width: 24px;
+  @media ${breakPoints.mobile} {
+    height: 17px;
+    width: 17px;
+  }
 `;
 export const ItemInfoCountDiv = styled.div`
   color: #2c2c2c;
   font-size: 14px;
   line-height: 24px;
   padding: 0 5px;
+  @media ${breakPoints.mobile} {
+    font-size: 8px;
+    line-height: 14px;
+  }
 `;
 export const IteminfoDateDiv = styled.div`
   color: #676767;
   font-size: 12px;
   line-height: 24px;
+  @media ${breakPoints.mobile} {
+    font-size: 8px;
+    line-height: 14px;
+  }
 `;

@@ -36,11 +36,11 @@ export default function CardItemPresenterPage(props: any) {
         <S.ItemInfoMidDiv>
           <S.MidStoreInfoDiv>
             <S.ItemInfoStoreName>
-              {props.fetchBoardsCategoryData?.place.placeName}
+              {props.fetchBoardsCategoryData?.place?.placeName}
             </S.ItemInfoStoreName>
             <S.ItemInfoBarDiv>|</S.ItemInfoBarDiv>
             <S.ItemInfoLocationDiv>
-              {props.fetchBoardsCategoryData?.place.placeAddress.split(" ")[1]}
+              {props.fetchBoardsCategoryData?.place?.placeAddress.split(" ")[1]}
             </S.ItemInfoLocationDiv>
           </S.MidStoreInfoDiv>
           <S.ItemInfoUserDiv>
@@ -64,7 +64,7 @@ export default function CardItemPresenterPage(props: any) {
             </S.ItemInfoLeftDiv>
           </S.ItemInfoLeftDiv>
           <S.IteminfoDateDiv>
-            {props.fetchBoardsCategoryData?.createAt.slice(0, 10)}
+            {props.fetchBoardsCategoryData?.createAt?.slice(0, 10)}
           </S.IteminfoDateDiv>
         </S.ItemInfoBottomDiv>
       </S.ItemInfoDiv>
