@@ -147,7 +147,6 @@ export const HeaderNonMembersRightBox = styled.div`
   display: flex;
   align-items: center;
   @media ${breakPoints.mobile} {
-    background-color: red;
   }
 `;
 export const HeaderLogin = styled.div`

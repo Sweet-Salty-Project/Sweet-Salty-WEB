@@ -11,6 +11,7 @@ import {
 export default function ShopDetailContainerPage(props: any) {
   const router = useRouter();
   const [buyAmount, setBuyAmount] = useState(0);
+  const [isBuyBtn, setIsBuyBtn] = useState(false);
   const [payShop] = useMutation(PAY_SHOP);
   const { data: fetchUserLoggedInData } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: fetchShopData } = useQuery(FETCH_SHOP, {
@@ -78,6 +79,10 @@ export default function ShopDetailContainerPage(props: any) {
     router.push(`/shop/${router.query.shopId}/edit`);
   };
 
+  const onClickBuyBtn = () => {
+    setIsBuyBtn((prev) => !prev);
+  };
+
   return (
     <ShopDetailPresenterPage
       fetchUserLoggedIn={fetchUserLoggedInData}
@@ -91,6 +96,8 @@ export default function ShopDetailContainerPage(props: any) {
       onClickPay={onClickPay}
       onClickList={onClickList}
       onClickEdit={onClickEdit}
+      isBuyBtn={isBuyBtn}
+      onClickBuyBtn={onClickBuyBtn}
     />
   );
 }

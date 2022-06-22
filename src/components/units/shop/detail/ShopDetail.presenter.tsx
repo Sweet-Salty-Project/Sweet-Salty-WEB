@@ -6,34 +6,46 @@ export default function ShopDetailPresenterPage(props: any) {
   return (
     <S.Page>
       <S.TitleSection>
-        단짝 스토어 <S.RightOutline />{" "}
-        {props.fetchShop?.fetchShop.shopProductName} ㅣ{" "}
-        {props.fetchShop?.fetchShop.shopSeller}
+        <S.TitleFont>단짝 스토어 &nbsp; &gt; &nbsp;</S.TitleFont>
+        <S.TitleFont>
+          {props.fetchShop?.fetchShop.shopProductName} ㅣ{" "}
+          {props.fetchShop?.fetchShop.shopSeller}
+        </S.TitleFont>
       </S.TitleSection>
       <S.Main>
         <S.Padding>
           <S.MainSection>
             <S.MainLeftSection>
               <S.LeftTopInfoArticle>
-                <S.Thumbnail
-                  style={{
-                    backgroundImage: `url(${props.fetchShop?.fetchShop.thumbnail})`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    objectFit: "cover",
-                    overflow: "hidden",
-                  }}
-                >
+                <S.Thumbnail>
                   <S.ThumbnailTitle>일일 특가</S.ThumbnailTitle>
+                  <S.GifticonDiv>
+                    <S.GifticonImg
+                      style={{
+                        backgroundImage: `url(${props.fetchShop?.fetchShop.thumbnail})`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        objectFit: "cover",
+                        overflow: "hidden",
+                        backgroundPosition: "center",
+                      }}
+                    ></S.GifticonImg>
+                    <S.GifticonLogoDiv>
+                      <S.GifiticonLogo src="/images/storelogo.png"></S.GifiticonLogo>
+                    </S.GifticonLogoDiv>
+                  </S.GifticonDiv>
                 </S.Thumbnail>
+
                 <S.InfoSection>
                   <S.ShopNameArticle>
                     {props.fetchShop?.fetchShop.shopProductName} ㅣ{" "}
                     {props.fetchShop?.fetchShop.shopSeller} 식사권
                   </S.ShopNameArticle>
+
                   <S.ShopDescriptionArticle>
                     {props.fetchShop?.fetchShop.shopDescription}
                   </S.ShopDescriptionArticle>
+
                   <S.PriceArticle>
                     <S.OriginalPriceArticle>
                       {PointComma(props.fetchShop?.fetchShop.shopOriginalPrice)}
@@ -51,6 +63,25 @@ export default function ShopDetailPresenterPage(props: any) {
                       <S.DiscountedPriceWon>원</S.DiscountedPriceWon>
                     </S.DiscountedPriceSection>
                   </S.PriceArticle>
+
+                  <S.PriceArticleMedia>
+                    <S.DiscountedRateMedia>
+                      {props.fetchShop?.fetchShop.shopDisCount}%
+                    </S.DiscountedRateMedia>
+                    <S.DiscountedPriceSectionMedia>
+                      <S.DiscountedPriceMedia>
+                        {PointComma(
+                          props.fetchShop?.fetchShop.shopDisCountPrice
+                        )}
+                      </S.DiscountedPriceMedia>
+                      <S.DiscountedPriceWonMedia>원</S.DiscountedPriceWonMedia>
+                    </S.DiscountedPriceSectionMedia>
+                    <S.OriginalPriceArticleMedia>
+                      {PointComma(props.fetchShop?.fetchShop.shopOriginalPrice)}
+                      원
+                    </S.OriginalPriceArticleMedia>
+                  </S.PriceArticleMedia>
+
                   <S.CountButtonArticle>
                     <S.CountButton onClick={props.buyAmountMinus}>
                       -
@@ -60,8 +91,9 @@ export default function ShopDetailPresenterPage(props: any) {
                       +
                     </S.CountButton>
                   </S.CountButtonArticle>
+
                   <S.StockArticle>
-                    <S.StockText>재고 현황 : </S.StockText>
+                    <S.StockText>재고 현황 :&nbsp;</S.StockText>
                     <S.StockText>
                       {PointComma(props.fetchShop?.fetchShop.shopStock)}개
                     </S.StockText>
@@ -72,6 +104,7 @@ export default function ShopDetailPresenterPage(props: any) {
                   </S.GuideMessageSection>
                 </S.InfoSection>
               </S.LeftTopInfoArticle>
+
               <S.LeftBottomInfoArticle>
                 <div>
                   <S.ProductSmallSection>
@@ -139,6 +172,7 @@ export default function ShopDetailPresenterPage(props: any) {
                   </S.ProductSmallSection>
                 </div>
               </S.LeftBottomInfoArticle>
+
               <S.MapSection>
                 <S.MapTitleArticle>이용 식당 위치</S.MapTitleArticle>
                 <S.MapArticle>
@@ -149,6 +183,7 @@ export default function ShopDetailPresenterPage(props: any) {
                   )}
                 </S.MapArticle>
               </S.MapSection>
+
               <S.ButtonDiv>
                 <S.Button onClick={props.onClickList}>목록으로</S.Button>
                 <S.Button onClick={props.onClickEdit}>수정하기</S.Button>
@@ -157,7 +192,7 @@ export default function ShopDetailPresenterPage(props: any) {
           </S.MainSection>
         </S.Padding>
 
-        <S.MainRightSection>
+        <S.MainRightSection isBuyBtn={props.isBuyBtn}>
           <S.RightTitleArticle>포인트 결제 상세</S.RightTitleArticle>
           <div>
             <S.RightSection>
@@ -171,11 +206,11 @@ export default function ShopDetailPresenterPage(props: any) {
                 </S.UserNameSection>
                 <S.RightText>현재 보유 포인트</S.RightText>
               </div>
-              <S.RightTextOrange>
+              <S.UserAmountPoint>
                 {PointComma(
                   props.fetchUserLoggedIn?.fetchUserLoggedIn.userPoint
                 )}
-              </S.RightTextOrange>
+              </S.UserAmountPoint>
             </S.RightSection>
             <S.RightSection>
               <S.RightText>식사권 금액</S.RightText>
@@ -191,9 +226,13 @@ export default function ShopDetailPresenterPage(props: any) {
               <S.RightText>차감될 포인트</S.RightText>
               <S.AmountPoint>
                 {isNaN(props.amountPoint) ? (
-                  <div>수량을 선택해주세요</div>
+                  <S.AmountPointDefault>
+                    수량을 선택해주세요
+                  </S.AmountPointDefault>
                 ) : props.amountPoint === 0 ? (
-                  <div>수량을 선택해주세요</div>
+                  <S.AmountPointDefault>
+                    수량을 선택해주세요
+                  </S.AmountPointDefault>
                 ) : (
                   PointComma(props.amountPoint)
                 )}
@@ -207,7 +246,9 @@ export default function ShopDetailPresenterPage(props: any) {
               )}
               <S.RemainPoint>
                 {props.buyAmount === 0 ? (
-                  <div>수량을 선택해주세요</div>
+                  <S.RemainPointDefault>
+                    수량을 선택해주세요
+                  </S.RemainPointDefault>
                 ) : props.remainPoint > 0 ? (
                   PointComma(props.remainPoint)
                 ) : (
@@ -239,6 +280,9 @@ export default function ShopDetailPresenterPage(props: any) {
           </div>
         </S.MainRightSection>
       </S.Main>
+      <S.ShopBuyBtnSection onClick={props.onClickBuyBtn}>
+        <S.ShopBuyBtn src="/images/shopBuyBtn.png" />
+      </S.ShopBuyBtnSection>
     </S.Page>
   );
 }
