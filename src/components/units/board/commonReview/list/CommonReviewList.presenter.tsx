@@ -29,7 +29,9 @@ export default function CommonReviewPresenterPage(props: any) {
               <S.TopDiv>실시간</S.TopDiv>
               <S.BottomDiv>Top 3</S.BottomDiv>
             </S.TopThreeTitle>
-
+            <S.BestContentsMediaTitleArticle>
+              실시간 TOP 3
+            </S.BestContentsMediaTitleArticle>
             <S.ReviewSection>
               {props.fetchBoardBestData?.fetchBoardBest.map(
                 (el: any, idx: number) => (

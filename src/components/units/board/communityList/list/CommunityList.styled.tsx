@@ -15,7 +15,7 @@ export const Title = styled.div`
   font-size: 40px;
   padding: 100px 0;
   @media ${breakPoints.mobile} {
-    padding: 98px 0px 30px 0px;
+    padding: 20px 0px;
     font-size: 20px;
   }
 `;
@@ -31,6 +31,9 @@ export const SearchbarBox = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-bottom: 46px;
+  @media ${breakPoints.mobile} {
+    padding: 0;
+  }
 `;
 
 export const CommonReviewInnerBox = styled.div`
@@ -43,8 +46,7 @@ export const CommonReviewInnerBox = styled.div`
   flex-direction: column;
   box-shadow: 0px 5px 20px #dbdbdb;
   @media ${breakPoints.mobile} {
-    flex-direction: column;
-    padding: 0px;
+    padding:0 0 10px;
   }
 `;
 export const TopThreeBox = styled.div`
@@ -94,4 +96,7 @@ export const ReviewList = styled.div`
 
 export const TopButtonArticle = styled.div`
   padding: 50px 0px;
+  @media ${breakPoints.mobile} {
+    padding: 10px 0px;
+  }
 `;

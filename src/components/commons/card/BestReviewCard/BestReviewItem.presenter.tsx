@@ -34,11 +34,9 @@ export default function BestReviewItemPresenterPage(props: any) {
       </S.ItemImg>
       <S.ItemInfoDiv>
         <S.ItemInfoTopDiv>
-          <S.ItemInfoLeftDiv>
             <S.ItemInfoTitleDiv>
               {props.fetchBestDetailData?.boardTitle}
             </S.ItemInfoTitleDiv>
-          </S.ItemInfoLeftDiv>
         </S.ItemInfoTopDiv>
 
         <S.ItemInfoMidDiv>

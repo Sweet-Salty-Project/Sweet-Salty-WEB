@@ -15,7 +15,7 @@ export const Title = styled.div`
   font-size: 40px;
   padding: 100px 0;
   @media ${breakPoints.mobile} {
-    padding: 98px 0px 30px 0px;
+    padding: 20px 0px;
     font-size: 20px;
   }
 `;
@@ -31,22 +31,22 @@ export const SearchbarBox = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-bottom: 46px;
+  @media ${breakPoints.mobile} {
+    padding: 0;
+  }
 `;
 
 export const CommonReviewInnerBox = styled.div`
   position: relative;
-  box-shadow: 0px 5px 20px #dbdbdb;
   margin: 0 auto;
   padding: 24px;
-  width: 1338px;
   background: #fff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 5px 20px #dbdbdb;
   @media ${breakPoints.mobile} {
-    flex-direction: column;
-    padding: 20px;
-    width:100%;
+    padding: 0 0 10px;
   }
 `;
 
@@ -96,7 +96,7 @@ export const ReviewSection = styled.div`
   display: flex;
   align-items: center;
   @media ${breakPoints.mobile} {
-    width:100%;
+    width: 100%;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -113,6 +113,7 @@ export const CommonReviewHr = styled.div`
   background: #dadada;
   @media ${breakPoints.mobile} {
     width: 100%;
+    margin-bottom: 0;
   }
 `;
 
@@ -128,4 +129,7 @@ export const ReviewList = styled.div`
 
 export const TopButtonArticle = styled.div`
   padding: 50px 0px;
+  @media ${breakPoints.mobile} {
+    padding: 10px 0px;
+  }
 `;

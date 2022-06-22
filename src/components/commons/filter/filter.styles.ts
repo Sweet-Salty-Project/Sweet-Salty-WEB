@@ -150,6 +150,7 @@ export const OpenTagBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   @media ${breakPoints.mobile} {
+    padding-top: 10px;
     width: 100%;
   }
 `;

@@ -39,7 +39,7 @@ export const OpenTag = styled.div`
     }
     @media ${breakPoints.mobile} {
       font-size: 12px;
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
       margin: 0;
     }
