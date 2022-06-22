@@ -65,8 +65,6 @@ export default function ShopWriteContainerPage(props: any) {
     }
   };
 
-  console.log(props.fetchShop);
-
   useEffect(() => {
     setValue("menu", props.fetchShop?.shopProductName);
     setValue("seller", props.fetchShop?.shopSeller);
@@ -76,7 +74,7 @@ export default function ShopWriteContainerPage(props: any) {
     setValue("description", props.fetchShop?.shopDescription);
     setValue("stock", props.fetchShop?.shopStock);
     setAddress(props.fetchShop?.place);
-  });
+  }, []);
 
   const onClickUpdate = async (data: any) => {
     try {

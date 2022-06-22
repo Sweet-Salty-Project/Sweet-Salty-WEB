@@ -26,6 +26,11 @@ export default function FilterPresenter(props: any) {
             onClick={props.onClickFilterOpen}
             src="/images/filter.png"
           />
+          <S.MobileFiler>
+          <S.MobileFilerIcon
+            onClick={props.onClickFilterOpen}
+            src="/images/moblieFilter.png"
+          /></S.MobileFiler>
         </S.Wrapper>
       ) : (
         <S.OpenFilter>

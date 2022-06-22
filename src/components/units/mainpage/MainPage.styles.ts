@@ -1,10 +1,21 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../commons/globalstyles/Media";
 
+export const Page = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 export const MainPageWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 360px;
+    padding: 0px 20px;
+  }
 `;
 export const MainPageOutBox = styled.div`
   position: relative;

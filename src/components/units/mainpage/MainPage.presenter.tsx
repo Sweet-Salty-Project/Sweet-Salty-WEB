@@ -6,6 +6,7 @@ import MainReviewItemContainerPage from "../../commons/card/MainReviewCard/Revie
 import CardItemPresenterPage from "../../commons/card/CardItem/CardItem.presenter";
 export default function MainpagePresenter(props: any) {
   return (
+    <S.Page>
     <S.MainPageWrapper>
       <S.MainPageOutBox>
         <S.ReviewMenuBox>
@@ -123,5 +124,6 @@ export default function MainpagePresenter(props: any) {
         <TopButton />
       </S.TopButtonBox>
     </S.MainPageWrapper>
+    </S.Page>
   );
 }

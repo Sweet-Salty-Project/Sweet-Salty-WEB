@@ -1,18 +1,30 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/globalstyles/Media";
 
 export const CommonReviewWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 360px;
+  }
 `;
 export const Title = styled.div`
   font-weight: 700;
   font-size: 40px;
   padding: 100px 0;
+  @media ${breakPoints.mobile} {
+    padding: 98px 0px 30px 0px;
+    font-size: 20px;
+  }
 `;
 export const CommonReviewOutBox = styled.div`
   width: 1338px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 20px;
+  }
 `;
 
 export const SearchbarBox = styled.div`
@@ -30,6 +42,10 @@ export const CommonReviewInnerBox = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0px 5px 20px #dbdbdb;
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    padding: 0px;
+  }
 `;
 export const TopThreeBox = styled.div`
   margin: 30px 0;
@@ -70,6 +86,10 @@ export const ReviewList = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: 25% 25% 25% 25%;
+  @media ${breakPoints.mobile} {
+    grid-template-columns: 100%;
+    padding: 20px 0px 0px 0px;
+  }
 `;
 
 export const TopButtonArticle = styled.div`

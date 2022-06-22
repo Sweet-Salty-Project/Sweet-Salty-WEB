@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
+import { breakPoints } from "../globalstyles/Media";
 
 interface IAny {
   isReviewList?: any;
@@ -15,6 +16,11 @@ export const ReviewMenuBox = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 26px;
+    padding: 0 19px;
+  }
 `;
 export const ReviewMenu = styled.div`
   width: 299px;
@@ -43,6 +49,17 @@ export const ReviewMenu = styled.div`
   &:hover {
     background: linear-gradient(0.25turn, #ff6e30, #ffa230);
     color: #fff;
+  }
+  @media ${breakPoints.mobile} {
+    display:flex;
+    width: 66px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 10px 0px 0px;
+    
   }
 `;
 

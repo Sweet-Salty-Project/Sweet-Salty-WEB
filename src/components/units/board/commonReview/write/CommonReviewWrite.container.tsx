@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import CommonReviewWritePresenter from "./CommonReviewWrite.presenter";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import {
   CREATE_BOARD,
@@ -10,9 +10,7 @@ import {
   UPDATE_BOARD,
 } from "./CommonReviewWrite.queries";
 import { Editor } from "@toast-ui/react-editor";
-
 export default function CommonReviewWriteContainer(props: any) {
-  
   const editorRef = useRef<Editor>(null);
   const router = useRouter();
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -45,16 +43,16 @@ export default function CommonReviewWriteContainer(props: any) {
   ]);
   const [moodTagData, setMoodTagData] = useState([
     { key: "0", value: "가족들과", checked: false, index: 0 },
-    { key: "1", value: "동창회자리로좋은", checked: false, index: 0 },
-    { key: "2", value: "부모님과함께", checked: false, index: 0 },
-    { key: "3", value: "소개팅", checked: false, index: 0 },
-    { key: "4", value: "술자리로좋은", checked: false, index: 0 },
-    { key: "5", value: "썸타는사람과", checked: false, index: 0 },
-    { key: "6", value: "애인과함께", checked: false, index: 0 },
-    { key: "7", value: "친구와함께", checked: false, index: 0 },
-    { key: "8", value: "혼밥하기좋은", checked: false, index: 0 },
-    { key: "9", value: "혼술하기좋은", checked: false, index: 0 },
-    { key: "10", value: "회식자리로좋은", checked: false, index: 0 },
+    { key: "1", value: "동창회자리로좋은", checked: false, index: 1 },
+    { key: "2", value: "부모님과함께", checked: false, index: 2 },
+    { key: "3", value: "소개팅", checked: false, index: 3 },
+    { key: "4", value: "술자리로좋은", checked: false, index: 4 },
+    { key: "5", value: "썸타는사람과", checked: false, index: 5 },
+    { key: "6", value: "애인과함께", checked: false, index: 6 },
+    { key: "7", value: "친구와함께", checked: false, index: 7 },
+    { key: "8", value: "혼밥하기좋은", checked: false, index: 8 },
+    { key: "9", value: "혼술하기좋은", checked: false, index: 9 },
+    { key: "10", value: "회식자리로좋은", checked: false, index: 10 },
   ]);
 
   const [categoryData, setCategoryData] = useState([
@@ -74,7 +72,39 @@ export default function CommonReviewWriteContainer(props: any) {
       index: 2,
     },
   ]);
-
+  useEffect(() => {
+    const defaultMoodList = [];
+    if (props.updateData) {
+      // 음식분류
+      for (let i = 0; i < menuTagData.length; i++) {
+        if (
+          menuTagData[i].value ===
+          props.updateData?.boardSides[0]?.boardTags.boardTagName
+        ) {
+          menuTagData[i].checked = true;
+        }
+      }
+      setBoardTagMenu(props.updateData?.boardSides[0]?.boardTags.boardTagName);
+      // 분위기
+      for (let i = 2; i < props.updateData.boardSides.length; i++) {
+        if (
+          props.updateData.boardSides[i].boardTags.boardTagRefName === "MOOD"
+        ) {
+          defaultMoodList.push(
+            props.updateData?.boardSides[i].boardTags.boardTagName
+          );
+        }
+      }
+      for (let i = 0; i < moodTagData.length; i++) {
+        if (defaultMoodList.includes(moodTagData[i].value)) {
+          moodTagData[i].checked = true;
+        }
+      }
+      setMoodHashTag(defaultMoodList);
+    }
+  }, [props.updateData]);
+  // console.log(moodHashTag,"해시")
+  // console.log(moodTagData,"무테데")
   const onChangeCheckMenu = (el: any) => (event: any) => {
     const select = menuTagData.map((el, idx) => {
       return { ...el, checked: idx === Number(event.target.id) };
@@ -90,7 +120,7 @@ export default function CommonReviewWriteContainer(props: any) {
     } else if (!checked) {
       setMoodHashTag(moodHashTag.filter((el) => el !== item));
     }
-    if (moodHashTag.length > 2) {
+    if (checked && moodHashTag.length > 2) {
       alert("분위기는 최대 3개까지 선택 가능합니다.");
       setMoodHashTag(moodHashTag.filter((el) => el !== item));
       event.target.checked = false;
@@ -115,6 +145,10 @@ export default function CommonReviewWriteContainer(props: any) {
   };
   const onClickReg = async (data: any) => {
     const contentsvalue = editorRef.current?.getInstance().getMarkdown();
+    if (!address.road_address_name.split(" ")[0].includes("서울")) {
+      alert("지금은 서울에 있는 맛집의 리뷰만 등록이 가능해요!");
+      return;
+    }
     if (subCategoryName === "REVIEW" || subCategoryName === "TASTER") {
       if (moodHashTag.length > 3) {
         alert("분위기는 3개까지 선택이 가능합니다.");
@@ -236,7 +270,12 @@ export default function CommonReviewWriteContainer(props: any) {
               : props.updateData?.boardSalt,
             boardContents: contentsvalue || props.updateData?.boardContents,
             subCategoryName: props.updateData?.subCategoryName,
-            tags: props.updateData?.tags,
+            tags: [
+              boardTagMenu,
+              ...moodHashTag,
+              props.updateData?.place.placeAddress.split(" ")[1],
+            ],
+            // props.updateData?.tags,
             place: {
               placeName: props.updateData?.place.placeName,
               placeAddress: props.updateData?.place.placeAddress,
@@ -247,7 +286,7 @@ export default function CommonReviewWriteContainer(props: any) {
           },
         },
       });
-      alert("수정 완료")
+      alert("수정 완료");
       router.push(`/reviews/commonReview/${router.query.boardId}`);
     } catch (error: any) {
       alert(error.message);
@@ -286,6 +325,7 @@ export default function CommonReviewWriteContainer(props: any) {
       registerSetIsOpen={registerSetIsOpen}
       onClickSuccess={onClickSuccess}
       editorRef={editorRef}
+      setSubCategoryName={setSubCategoryName}
     />
   );
 }

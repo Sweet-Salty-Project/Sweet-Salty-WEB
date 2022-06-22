@@ -1,18 +1,24 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../globalstyles/Media";
 
 export const OpenTag = styled.div`
   display: flex;
   flex-wrap: wrap;
   font-weight: 700;
   font-size: 16px;
-
+  @media ${breakPoints.mobile} {
+    font-size: 12px;
+  }
   .checkbox input {
     display: none;
   }
 
   .checkbox {
     display: flex;
-    margin-right: 30px;
+    margin: 0px 30px 10px 0px;
+    @media ${breakPoints.mobile} {
+    margin: 0 6px 8px 0;
+  }
   }
 
   .checkbox_text {
@@ -27,7 +33,16 @@ export const OpenTag = styled.div`
     &:hover {
       background-color: #ff9a31;
       color: #ffffff;
+      @media ${breakPoints.mobile} {
+        background-color: #d2d2d2;
+      }
     }
+    @media ${breakPoints.mobile} {
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin:0;
+  }
   }
 
   .checkbox_icon {

@@ -17,6 +17,7 @@ const EditorForWrite = dynamic(
   }
 );
 export default function CommonReviewWritePresenter(props: any) {
+  
   return (
     <S.Wrapper>
       {props.cancelIsOpen && (
@@ -193,25 +194,7 @@ export default function CommonReviewWritePresenter(props: any) {
                 메뉴 선택<S.Span>(1개만 선택 가능)</S.Span>
               </S.WriteTitle>
 
-              {props.isEdit ? (
-                <S.MenuBox>
-                  <S.CategoryPick>
-                    {props.updateData?.boardSides[0]?.boardTags.boardTagName}
-                  </S.CategoryPick>
-                  {props.menuTagData.map((el: any, idx: any) => (
-                    <label className="checkbox" key={el.key}>
-                      <input
-                        type="checkbox"
-                        id={String(idx)}
-                        onChange={props.onChangeCheckMenu(el)}
-                        checked={Boolean(el.checked)}
-                        // checked={ props.updateData?.boardSides[0]?.boardTags.boardTagName===el.value||Boolean(el.checked)}
-                      />
-                      <span className="checkbox_text">{el.value}</span>
-                    </label>
-                  ))}
-                </S.MenuBox>
-              ) : (
+              
                 <S.MenuBox>
                   {props.menuTagData.map((el: any, idx: any) => (
                     <label className="checkbox" key={el.key}>
@@ -225,7 +208,7 @@ export default function CommonReviewWritePresenter(props: any) {
                     </label>
                   ))}
                 </S.MenuBox>
-              )}
+              
             </S.MenuArticle>
 
             <S.MoodArticle

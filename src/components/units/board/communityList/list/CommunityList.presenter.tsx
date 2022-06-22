@@ -15,7 +15,6 @@ export default function CommunityListPresenterPage(props: any) {
             communityCheckPage={props.communityCheckPage}
           />
         </S.SearchbarBox>
-
         <ReviewMenuPage />
 
         <S.CommonReviewInnerBox>
