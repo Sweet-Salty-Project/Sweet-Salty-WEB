@@ -20,11 +20,15 @@ export default function WishPresenterPage(props: any) {
         <ReviewMenuPage />
 
         <S.CommonReviewInnerBox>
+        <S.TopBox>
           <S.TopThreeBox>
             <S.TopThreeTitle>
               <S.TopDiv>실시간</S.TopDiv>
               <S.BottomDiv>Top 3</S.BottomDiv>
             </S.TopThreeTitle>
+            <S.BestContentsMediaTitleArticle>
+              실시간 TOP 3
+            </S.BestContentsMediaTitleArticle>
             <S.ReviewSection>
               {props.fetchBoardBestData?.fetchBoardBest.map(
                 (el: any, idx: any) => (
@@ -39,6 +43,7 @@ export default function WishPresenterPage(props: any) {
             </S.ReviewSection>
           </S.TopThreeBox>
           <S.CommonReviewHr />
+          </S.TopBox>
           <div style={{ height: "auto", overflow: "auto" }}>
             <InfiniteScroll
               pageStart={0}
@@ -57,7 +62,7 @@ export default function WishPresenterPage(props: any) {
               </S.ReviewList>
             </InfiniteScroll>
           </div>
-          <S.CommonReviewHr />
+          {/* <S.CommonReviewHr /> */}
         </S.CommonReviewInnerBox>
       </S.CommonReviewOutBox>
       <S.TopButtonArticle>

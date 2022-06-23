@@ -38,18 +38,24 @@ export const SearchbarBox = styled.div`
 
 export const CommonReviewInnerBox = styled.div`
   position: relative;
-  box-shadow: 0px 5px 20px #dbdbdb;
   margin: 0 auto;
   padding: 24px;
-  width: 1338px;
   background: #fff;
   border-radius: 20px;
+  width: 1338px;
+  box-shadow: 0px 5px 20px #dbdbdb;
   display: flex;
   flex-direction: column;
   @media ${breakPoints.mobile} {
-    flex-direction: column;
-    padding: 20px;
+    padding:0 0 10px;
     width: 100%;
+  }
+`;
+export const TopBox = styled.div`
+display: flex;
+flex-direction: column;
+@media ${breakPoints.mobile} {
+    padding: 20px 20px 0;
   }
 `;
 export const TopThreeBox = styled.div`
@@ -59,6 +65,7 @@ export const TopThreeBox = styled.div`
   @media ${breakPoints.mobile} {
     flex-direction: column;
     justify-content: center;
+    margin : 10px 0 20px;
   }
 `;
 export const TopThreeTitle = styled.div`
@@ -78,7 +85,7 @@ export const BestContentsMediaTitleArticle = styled.div`
   @media ${breakPoints.mobile} {
     display: flex;
     color: #ff9a31;
-    padding: 0px 0px 0px 10px;
+    padding: 0px 0px 10px 10px;
     width: 100%;
   }
 `;

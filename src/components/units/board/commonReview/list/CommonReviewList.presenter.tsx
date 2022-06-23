@@ -22,6 +22,7 @@ export default function CommonReviewPresenterPage(props: any) {
         <ReviewMenuPage />
 
         <S.CommonReviewInnerBox>
+        <S.TopBox>
           <FilterContainer setSearch={props.setSearch} search={props.search} />
 
           <S.TopThreeBox>
@@ -47,6 +48,7 @@ export default function CommonReviewPresenterPage(props: any) {
           </S.TopThreeBox>
 
           <S.CommonReviewHr />
+          </S.TopBox>
           {props.search?.length ? (
             <div style={{ height: "auto", overflow: "auto" }}>
               <InfiniteScroll
